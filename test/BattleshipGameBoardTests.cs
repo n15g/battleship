@@ -1,3 +1,4 @@
+using System;
 using AssertNet;
 using NUnit.Framework;
 using NUnit.Framework.Interfaces;
@@ -16,8 +17,8 @@ namespace N15G.Battleship
         {
             var game = new BattleshipGameBoard();
 
-            Assertions.AssertThat(game.SizeX).IsEqualTo(8);
-            Assertions.AssertThat(game.SizeY).IsEqualTo(8);
+            Assertions.AssertThat(game.SizeX).IsEqualTo(10);
+            Assertions.AssertThat(game.SizeY).IsEqualTo(10);
         }
 
         [Test]
@@ -74,6 +75,67 @@ namespace N15G.Battleship
             Assertions.AssertThat(nsCruiser.Top).IsEqualTo(4);
             Assertions.AssertThat(nsCruiser.Right).IsEqualTo(3);
             Assertions.AssertThat(nsCruiser.Bottom).IsEqualTo(7);
+        }
+
+        [Test]
+        public void TestInsertShipWithinGameBounds()
+        {
+            new BattleshipGameBoard()
+                .PlaceShip(new Carrier(), 0, 0, Heading.EastWest);
+        }
+
+        [Test]
+        public void TestInsertShipRightOnXBoundary()
+        {
+            new BattleshipGameBoard()
+                .PlaceShip(new Carrier(), 5, 0, Heading.EastWest);
+        }
+
+        [Test]
+        public void TestInsertShipRightOnYBoundary()
+        {
+            new BattleshipGameBoard()
+                .PlaceShip(new Carrier(), 0, 5, Heading.NorthSouth);
+        }
+
+        [Test]
+        public void TestInsertShipExceedingXAxis()
+        {
+            Assertions.AssertThat(() =>
+            {
+                new BattleshipGameBoard()
+                    .PlaceShip(new Carrier(), 8, 0, Heading.EastWest);
+            }).ThrowsException(typeof(ArgumentOutOfRangeException));
+        }
+
+        [Test]
+        public void TestInsertShipEntirelyOverXAxis()
+        {
+            Assertions.AssertThat(() =>
+            {
+                new BattleshipGameBoard()
+                    .PlaceShip(new Carrier(), 15, 0, Heading.EastWest);
+            }).ThrowsException(typeof(ArgumentOutOfRangeException));
+        }
+
+        [Test]
+        public void TestInsertShipExceedingYAxis()
+        {
+            Assertions.AssertThat(() =>
+            {
+                new BattleshipGameBoard()
+                    .PlaceShip(new Carrier(), 0, 8, Heading.NorthSouth);
+            }).ThrowsException(typeof(ArgumentOutOfRangeException));
+        }
+
+        [Test]
+        public void TestInsertShipEntirelyOverYAxis()
+        {
+            Assertions.AssertThat(() =>
+            {
+                new BattleshipGameBoard()
+                    .PlaceShip(new Carrier(), 0, 15, Heading.EastWest);
+            }).ThrowsException(typeof(ArgumentOutOfRangeException));
         }
     }
 }

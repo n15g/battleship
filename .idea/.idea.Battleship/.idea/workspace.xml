@@ -8,26 +8,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a93027d0-4026-4299-812c-dd41618885db" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Battleship/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Battleship/.idea/contentModel.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Battleship/.idea/indexLayout.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Battleship/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Battleship/.idea/projectSettingsUpdater.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Battleship/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Battleship/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Battleship.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Battleship.csproj.DotSettings" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Battleship.sln" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Battleship.sln.DotSettings.user" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/BattleshipGameBoard.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Heading.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/IShip.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Ships.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/BattleshipGameBoardTests.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/ShipTests.cs" afterDir="false" />
+    <list default="true" id="a93027d0-4026-4299-812c-dd41618885db" name="Default Changelist" comment="* Basic setup.&#10;* Grid creation and validation.&#10;* Basic ship functionality and hull classes.&#10;* Basic fleet positioning.">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Battleship/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Battleship/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BattleshipGameBoard.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/BattleshipGameBoard.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/BattleshipGameBoardTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/test/BattleshipGameBoardTests.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,9 +46,9 @@
         <option value="$PROJECT_DIR$/src/Ships.cs" />
         <option value="$PROJECT_DIR$/test/ShipTests.cs" />
         <option value="$PROJECT_DIR$/src/Heading.cs" />
+        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/BattleshipGameBoard.cs" />
         <option value="$PROJECT_DIR$/test/BattleshipGameBoardTests.cs" />
-        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -118,8 +102,16 @@
       <option name="presentableId" value="Default" />
       <updated>1605133257341</updated>
       <workItem from="1605133265566" duration="636000" />
-      <workItem from="1605135287406" duration="9942000" />
+      <workItem from="1605135287406" duration="12247000" />
     </task>
+    <task id="LOCAL-00001" summary="* Basic setup.&#10;* Grid creation and validation.&#10;* Basic ship functionality and hull classes.&#10;* Basic fleet positioning.">
+      <created>1605237184583</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1605237184583</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -141,6 +133,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="* Basic setup.&#10;* Grid creation and validation.&#10;* Basic ship functionality and hull classes.&#10;* Basic fleet positioning." />
+    <option name="LAST_COMMIT_MESSAGE" value="* Basic setup.&#10;* Grid creation and validation.&#10;* Basic ship functionality and hull classes.&#10;* Basic fleet positioning." />
   </component>
   <component name="WindowStateProjectService">
     <state x="488" y="313" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605225426579">
@@ -167,6 +161,10 @@
       <screen x="0" y="23" width="2048" height="1257" />
     </state>
     <state x="682" y="339" key="RiderGenerateDialog/0.23.2048.1257@0.23.2048.1257" timestamp="1605234741838" />
+    <state x="100" y="124" width="1848" height="1057" key="VCS.FileHistoryDialog" timestamp="1605243041940">
+      <screen x="0" y="23" width="2048" height="1257" />
+    </state>
+    <state x="100" y="124" width="1848" height="1057" key="VCS.FileHistoryDialog/0.23.2048.1257@0.23.2048.1257" timestamp="1605243041940" />
     <state x="686" y="304" width="670" height="676" key="search.everywhere.popup" timestamp="1605234344334">
       <screen x="0" y="23" width="2048" height="1257" />
     </state>

@@ -14,7 +14,7 @@ namespace N15G.Battleship
         public readonly Cell[,] Grid;
         public readonly FleetEntry[] Fleet = { };
 
-        public BattleshipGameBoard(uint sizeX = 8, uint sizeY = 8)
+        public BattleshipGameBoard(uint sizeX = 10, uint sizeY = 10)
         {
             SizeX = sizeX;
             SizeY = sizeY;
@@ -30,14 +30,28 @@ namespace N15G.Battleship
             }
         }
 
-        public void PlaceShip(IShip ship, uint x, uint y, Heading heading)
+        public BattleshipGameBoard PlaceShip(IShip ship, uint x, uint y, Heading heading)
         {
             var fleetEntry = new FleetEntry(ship, x, y, heading);
             AssertGridBoundary(fleetEntry);
+
+            return this;
         }
 
         private void AssertGridBoundary(FleetEntry entry)
         {
+            var gridBounds = GetGridBoundingBox();
+            var shipBounds = entry.GetBoundingBox();
+
+            if (!gridBounds.Contains(shipBounds))
+            {
+                throw new ArgumentOutOfRangeException(nameof(entry), "Ship placement exceeds game boundaries");
+            }
+        }
+
+        private Rectangle GetGridBoundingBox()
+        {
+            return new Rectangle(0, 0, (int) SizeX, (int) SizeY);
         }
 
         public class Cell
