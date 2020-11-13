@@ -26,8 +26,9 @@
       <e p="packages" t="ExcludeRecursive" />
       <e p="README.md" t="Include" />
       <e p="src" t="Include">
-        <e p="BattleshipGameBoard.cs" t="Include" />
-        <e p="Heading.cs" t="Include" />
+        <e p="Facing.cs" t="Include" />
+        <e p="GameBoard.cs" t="Include" />
+        <e p="IGameBoard.cs" t="Include" />
         <e p="IShip.cs" t="Include" />
         <e p="ship" t="Include" />
         <e p="Ships.cs" t="Include" />
