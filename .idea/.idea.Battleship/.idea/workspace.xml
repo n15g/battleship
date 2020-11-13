@@ -8,14 +8,16 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a93027d0-4026-4299-812c-dd41618885db" name="Default Changelist" comment="* Ship placement collision detection.">
-      <change afterPath="$PROJECT_DIR$/src/IGameBoard.cs" afterDir="false" />
+    <list default="true" id="a93027d0-4026-4299-812c-dd41618885db" name="Default Changelist" comment="Extracted interfaces for main functionality.">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Battleship/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Battleship/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Battleship/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Battleship/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/BattleshipGameBoard.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameBoard.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Heading.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Facing.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Battleship.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Battleship.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GameBoard.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/GameBoard.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/IGameBoard.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/IGameBoard.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/IShip.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/IShip.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/BattleshipGameBoardTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/test/BattleshipGameBoardTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Ships.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ships.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/BattleshipGameBoardTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/test/GameBoardTests.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,13 +52,14 @@
         <option value="$PROJECT_DIR$/src/Ships.cs" />
         <option value="$PROJECT_DIR$/test/ShipTests.cs" />
         <option value="$PROJECT_DIR$/src/Heading.cs" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/Facing.cs" />
-        <option value="$PROJECT_DIR$/src/IShip.cs" />
         <option value="$PROJECT_DIR$/src/BattleshipGameBoard.cs" />
-        <option value="$PROJECT_DIR$/src/GameBoard.cs" />
         <option value="$PROJECT_DIR$/test/BattleshipGameBoardTests.cs" />
         <option value="$PROJECT_DIR$/src/IGameBoard.cs" />
+        <option value="$PROJECT_DIR$/test/GameBoardTests.cs" />
+        <option value="$PROJECT_DIR$/src/IShip.cs" />
+        <option value="$PROJECT_DIR$/src/GameBoard.cs" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -77,7 +80,7 @@
     <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.30025315" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected=".NET Project.Battleship">
@@ -113,7 +116,7 @@
       <updated>1605133257341</updated>
       <workItem from="1605133265566" duration="636000" />
       <workItem from="1605135287406" duration="16824000" />
-      <workItem from="1605306028286" duration="2735000" />
+      <workItem from="1605306028286" duration="5437000" />
     </task>
     <task id="LOCAL-00001" summary="* Basic setup.&#10;* Grid creation and validation.&#10;* Basic ship functionality and hull classes.&#10;* Basic fleet positioning.">
       <created>1605237184583</created>
@@ -136,7 +139,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605251959949</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Extracted interfaces for main functionality.">
+      <created>1605309022360</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1605309022360</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -161,7 +171,8 @@
     <MESSAGE value="* Basic setup.&#10;* Grid creation and validation.&#10;* Basic ship functionality and hull classes.&#10;* Basic fleet positioning." />
     <MESSAGE value="* Game board boundary testing on ship placement." />
     <MESSAGE value="* Ship placement collision detection." />
-    <option name="LAST_COMMIT_MESSAGE" value="* Ship placement collision detection." />
+    <MESSAGE value="Extracted interfaces for main functionality." />
+    <option name="LAST_COMMIT_MESSAGE" value="Extracted interfaces for main functionality." />
   </component>
   <component name="WindowStateProjectService">
     <state x="488" y="313" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605225426579">
@@ -256,32 +267,33 @@
       <screen x="0" y="23" width="2048" height="1257" />
     </state>
     <state width="2006" height="455" key="GridCell.Tab.4.right/0.23.2048.1257@0.23.2048.1257" timestamp="1605256078523" />
-    <state x="682" y="340" key="RiderGenerateDialog" timestamp="1605307018177">
+    <state x="682" y="340" key="RiderGenerateDialog" timestamp="1605309466227">
       <screen x="0" y="25" width="2048" height="1255" />
     </state>
     <state x="682" y="339" key="RiderGenerateDialog/0.23.2048.1257@0.23.2048.1257" timestamp="1605234741838" />
-    <state x="682" y="340" key="RiderGenerateDialog/0.25.2048.1255@0.25.2048.1255" timestamp="1605307018177" />
-    <state x="530" y="282" key="SettingsEditor" timestamp="1605308924547">
+    <state x="682" y="340" key="RiderGenerateDialog/0.25.2048.1255@0.25.2048.1255" timestamp="1605309466227" />
+    <state x="530" y="282" key="SettingsEditor" timestamp="1605309448920">
       <screen x="0" y="25" width="2048" height="1255" />
     </state>
-    <state x="530" y="282" key="SettingsEditor/0.25.2048.1255@0.25.2048.1255" timestamp="1605308924547" />
+    <state x="530" y="282" key="SettingsEditor/0.25.2048.1255@0.25.2048.1255" timestamp="1605309448920" />
     <state x="100" y="126" width="1848" height="1056" key="VCS.FileHistoryDialog" timestamp="1605308094649">
       <screen x="0" y="25" width="2048" height="1255" />
     </state>
     <state x="100" y="124" width="1848" height="1057" key="VCS.FileHistoryDialog/0.23.2048.1257@0.23.2048.1257" timestamp="1605243041940" />
     <state x="100" y="126" width="1848" height="1056" key="VCS.FileHistoryDialog/0.25.2048.1255@0.25.2048.1255" timestamp="1605308094649" />
-    <state x="624" y="379" key="Vcs.Push.Dialog.v2" timestamp="1605251969128">
-      <screen x="0" y="23" width="2048" height="1257" />
+    <state x="624" y="380" key="Vcs.Push.Dialog.v2" timestamp="1605309024195">
+      <screen x="0" y="25" width="2048" height="1255" />
     </state>
     <state x="624" y="379" key="Vcs.Push.Dialog.v2/0.23.2048.1257@0.23.2048.1257" timestamp="1605251969128" />
+    <state x="624" y="380" key="Vcs.Push.Dialog.v2/0.25.2048.1255@0.25.2048.1255" timestamp="1605309024195" />
     <state x="698" y="274" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1605245500581">
       <screen x="0" y="23" width="2048" height="1257" />
     </state>
     <state x="698" y="274" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.23.2048.1257@0.23.2048.1257" timestamp="1605245500581" />
-    <state x="694" y="278" width="653" height="735" key="find.popup" timestamp="1605306575179">
+    <state x="694" y="278" width="653" height="735" key="find.popup" timestamp="1605310647019">
       <screen x="0" y="25" width="2048" height="1255" />
     </state>
-    <state x="694" y="278" width="653" height="735" key="find.popup/0.25.2048.1255@0.25.2048.1255" timestamp="1605306575179" />
+    <state x="694" y="278" width="653" height="735" key="find.popup/0.25.2048.1255@0.25.2048.1255" timestamp="1605310647019" />
     <state x="686" y="306" width="670" height="675" key="search.everywhere.popup" timestamp="1605306338384">
       <screen x="0" y="25" width="2048" height="1255" />
     </state>

@@ -5,7 +5,7 @@ namespace N15G.Battleship
         /// <summary>
         /// The length of the ship in grid squares.
         /// </summary>
-        public uint Length { get; }
+        public int Length { get; }
 
         /// <summary>
         /// Record of damage to hull segments.

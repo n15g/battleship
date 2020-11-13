@@ -11,17 +11,18 @@ namespace N15G.Battleship
 
         public int SizeX => Grid.GetLength(0);
         public int SizeY => Grid.GetLength(1);
-        
+
         public bool[,] Grid { get; }
+        public bool GameOver => _fleet.Count != 0 && _fleet.All(ship => ship.Ship.IsSunk);
         public IReadOnlyList<IGameBoard.IFleetEntry> Fleet => _fleet;
 
 
-        public BattleshipGameBoard(uint sizeX = 10, uint sizeY = 10)
+        public BattleshipGameBoard(int sizeX = 10, int sizeY = 10)
         {
             Grid = new bool[sizeX, sizeY];
         }
 
-        public BattleshipGameBoard PlaceShip(IShip ship, uint x, uint y, Facing facing)
+        public BattleshipGameBoard PlaceShip(IShip ship, int x, int y, Facing facing)
         {
             var fleetEntry = new FleetEntry(ship, x, y, facing);
 
@@ -31,6 +32,30 @@ namespace N15G.Battleship
             _fleet.Add(fleetEntry);
 
             return this;
+        }
+
+        public IGameBoard.AttackResult Attack(int x, int y)
+        {
+            if (Grid[x, y]) throw new ArgumentException("This cell has already been targeted");
+
+            Grid[x, y] = true;
+
+            var hitShip = _fleet.Find(ship => ship.GetBoundingBox().Contains(new Point(x, y)));
+            if (hitShip != null)
+            {
+                RegisterHit(hitShip, x, y);
+            }
+
+            return new IGameBoard.AttackResult(hitShip != null, GameOver);
+        }
+
+        private static void RegisterHit(IGameBoard.IFleetEntry hitShip, int x, int y)
+        {
+            var damageIndex = hitShip.Facing == Facing.Horizontal
+                ? x - hitShip.X
+                : y - hitShip.Y;
+
+            hitShip.Ship.ApplyDamage(damageIndex);
         }
 
         private void AssertGridBoundary(FleetEntry entry)
@@ -62,11 +87,11 @@ namespace N15G.Battleship
         public class FleetEntry : IGameBoard.IFleetEntry
         {
             public IShip Ship { get; }
-            public uint X { get; }
-            public uint Y { get; }
+            public int X { get; }
+            public int Y { get; }
             public Facing Facing { get; }
 
-            public FleetEntry(IShip ship, uint x, uint y, Facing facing)
+            public FleetEntry(IShip ship, int x, int y, Facing facing)
             {
                 Ship = ship;
                 X = x;
@@ -77,8 +102,8 @@ namespace N15G.Battleship
             public Rectangle GetBoundingBox()
             {
                 return Facing == Facing.Horizontal
-                    ? new Rectangle((int) X, (int) Y, (int) Ship.Length, 1)
-                    : new Rectangle((int) X, (int) Y, 1, (int) Ship.Length);
+                    ? new Rectangle(X, Y, Ship.Length, 1)
+                    : new Rectangle(X, Y, 1, Ship.Length);
             }
         }
     }

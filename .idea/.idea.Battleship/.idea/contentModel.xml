@@ -30,11 +30,10 @@
         <e p="GameBoard.cs" t="Include" />
         <e p="IGameBoard.cs" t="Include" />
         <e p="IShip.cs" t="Include" />
-        <e p="ship" t="Include" />
         <e p="Ships.cs" t="Include" />
       </e>
       <e p="test" t="Include">
-        <e p="BattleshipGameBoardTests.cs" t="Include" />
+        <e p="GameBoardTests.cs" t="Include" />
         <e p="ShipTests.cs" t="Include" />
       </e>
     </e>

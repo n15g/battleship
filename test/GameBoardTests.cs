@@ -6,11 +6,6 @@ namespace N15G.Battleship
 {
     public class BattleshipGameBoardTests
     {
-        [SetUp]
-        public void Setup()
-        {
-        }
-
         [Test]
         public void TestDefaults()
         {
@@ -34,9 +29,9 @@ namespace N15G.Battleship
         {
             var game = new BattleshipGameBoard();
 
-            for (uint x = 0; x < game.SizeX; x++)
+            for (int x = 0; x < game.SizeX; x++)
             {
-                for (uint y = 0; y < game.SizeY; y++)
+                for (int y = 0; y < game.SizeY; y++)
                 {
                     var cell = game.Grid[x, y];
                     Assertions.AssertThat(cell).IsFalse();
@@ -167,6 +162,96 @@ namespace N15G.Battleship
             Assertions.AssertThat(() => { game.PlaceShip(new Cruiser(), 1, 0, Facing.Vertical); })
                 .ThrowsException(typeof(ArgumentException))
                 .WithMessageContaining("collide");
+        }
+
+        [Test]
+        public void TestGameOverWithNoFleet()
+        {
+            var game = new BattleshipGameBoard();
+
+            Assertions.AssertThat(game.GameOver).IsFalse();
+        }
+
+        [Test]
+        public void TestGameOverWithUndamagedFleet()
+        {
+            var game = new BattleshipGameBoard()
+                .PlaceShip(new Destroyer(), 0, 0, Facing.Horizontal)
+                .PlaceShip(new Carrier(), 0, 1, Facing.Vertical);
+
+            Assertions.AssertThat(game.GameOver).IsFalse();
+        }
+
+        [Test]
+        public void TestGameOverWithSunkFleet()
+        {
+            var game = new BattleshipGameBoard()
+                .PlaceShip(new Destroyer(), 0, 0, Facing.Horizontal)
+                .PlaceShip(new Carrier(), 1, 1, Facing.Vertical);
+
+            game.Attack(0, 0);
+            game.Attack(1, 0);
+
+            game.Attack(1, 1);
+            game.Attack(1, 2);
+            game.Attack(1, 3);
+            game.Attack(1, 4);
+            game.Attack(1, 5);
+
+            Assertions.AssertThat(game.GameOver).IsTrue();
+        }
+
+        [Test]
+        public void TestAttackTwice()
+        {
+            var game = new BattleshipGameBoard();
+
+            game.Attack(0, 0);
+            Assertions.AssertThat(() => game.Attack(0, 0))
+                .ThrowsException(typeof(ArgumentException))
+                .WithMessageContaining("already");
+        }
+
+
+        [Test]
+        public void TestAttackMiss()
+        {
+            var game = new BattleshipGameBoard()
+                .PlaceShip(new Destroyer(), 0, 0, Facing.Horizontal)
+                .PlaceShip(new Carrier(), 0, 1, Facing.Vertical);
+
+            Assertions.AssertThat(game.Attack(3, 3).Hit).IsFalse();
+        }
+
+        [Test]
+        public void TestAttackHit()
+        {
+            var game = new BattleshipGameBoard()
+                .PlaceShip(new Destroyer(), 0, 0, Facing.Horizontal)
+                .PlaceShip(new Carrier(), 0, 1, Facing.Vertical);
+
+            Assertions.AssertThat(game.Attack(0, 0).Hit).IsTrue();
+        }
+
+        [Test]
+        public void TestAttackGameOverWithSunkFleet()
+        {
+            var game = new BattleshipGameBoard()
+                .PlaceShip(new Destroyer(), 0, 0, Facing.Horizontal)
+                .PlaceShip(new Carrier(), 1, 1, Facing.Vertical);
+
+            var attackResult = game.Attack(0, 0);
+            game.Attack(1, 0);
+
+            Assertions.AssertThat(attackResult.GameOver).IsFalse();
+
+            game.Attack(1, 1);
+            game.Attack(1, 2);
+            game.Attack(1, 3);
+            game.Attack(1, 4);
+            attackResult = game.Attack(1, 5);
+
+            Assertions.AssertThat(attackResult.GameOver).IsTrue();
         }
     }
 }

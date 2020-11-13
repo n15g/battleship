@@ -4,15 +4,15 @@ namespace N15G.Battleship
 {
     public class BaseShip : IShip
     {
-        private readonly uint _length;
+        private readonly int _length;
         private readonly bool[] _damage;
 
-        public uint Length => _length;
+        public int Length => _length;
         public bool[] Damage => _damage;
 
         public bool IsSunk => _damage.All(x => x);
 
-        public BaseShip(uint length)
+        public BaseShip(int length)
         {
             _length = length;
             _damage = new bool[_length];
