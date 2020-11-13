@@ -1,8 +1,7 @@
 using System;
-using System.Data;
+using System.Collections.Generic;
 using System.Drawing;
-using System.Numerics;
-using AssertNet;
+using System.Linq;
 
 namespace N15G.Battleship
 {
@@ -12,7 +11,7 @@ namespace N15G.Battleship
         public readonly uint SizeY;
 
         public readonly Cell[,] Grid;
-        public readonly FleetEntry[] Fleet = { };
+        public readonly List<FleetEntry> Fleet = new List<FleetEntry>();
 
         public BattleshipGameBoard(uint sizeX = 10, uint sizeY = 10)
         {
@@ -33,7 +32,11 @@ namespace N15G.Battleship
         public BattleshipGameBoard PlaceShip(IShip ship, uint x, uint y, Heading heading)
         {
             var fleetEntry = new FleetEntry(ship, x, y, heading);
+
             AssertGridBoundary(fleetEntry);
+            AssertNoCollisions(fleetEntry);
+
+            Fleet.Add(fleetEntry);
 
             return this;
         }
@@ -46,6 +49,16 @@ namespace N15G.Battleship
             if (!gridBounds.Contains(shipBounds))
             {
                 throw new ArgumentOutOfRangeException(nameof(entry), "Ship placement exceeds game boundaries");
+            }
+        }
+
+        private void AssertNoCollisions(FleetEntry entry)
+        {
+            var shipBounds = entry.GetBoundingBox();
+
+            if (Fleet.Any(existingShip => existingShip.GetBoundingBox().IntersectsWith(shipBounds)))
+            {
+                throw new ArgumentException("Ship placement would collide with an existing ship");
             }
         }
 
@@ -77,8 +90,8 @@ namespace N15G.Battleship
             public Rectangle GetBoundingBox()
             {
                 return Heading == Heading.EastWest
-                    ? new Rectangle((int) X, (int) Y, (int) Ship.Length, 0)
-                    : new Rectangle((int) X, (int) Y, 0, (int) Ship.Length);
+                    ? new Rectangle((int) X, (int) Y, (int) Ship.Length, 1)
+                    : new Rectangle((int) X, (int) Y, 1, (int) Ship.Length);
             }
         }
     }

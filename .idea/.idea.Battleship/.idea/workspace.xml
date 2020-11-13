@@ -8,7 +8,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a93027d0-4026-4299-812c-dd41618885db" name="Default Changelist" comment="* Basic setup.&#10;* Grid creation and validation.&#10;* Basic ship functionality and hull classes.&#10;* Basic fleet positioning.">
+    <list default="true" id="a93027d0-4026-4299-812c-dd41618885db" name="Default Changelist" comment="* Game board boundary testing on ship placement.">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Battleship/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Battleship/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/BattleshipGameBoard.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/BattleshipGameBoard.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/BattleshipGameBoardTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/test/BattleshipGameBoardTests.cs" afterDir="false" />
@@ -23,10 +23,12 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/06615C26-52CA-48DE-BBD0-B6319618FD17/7/Vector2.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/18FD0280-F595-4534-A864-9C11E9235D85/E6/Vector.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/C158E430-C142-4741-ADAB-56A022C4B7B0/D/AnyAll.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/12A4FA9E-DF32-4471-9A65-FE48E8137385/22/DataException.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/18FD0280-F595-4534-A864-9C11E9235D85/DC/UInt32.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/FB075CAA-6906-4EF9-93AC-DB387FB02064/7/Rectangle.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -65,6 +67,8 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.34987342" />
+    <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.30025315" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="settings.editor.selected.configurable" value="SolutionBuilderGeneralOptionsPageId" />
@@ -102,7 +106,7 @@
       <option name="presentableId" value="Default" />
       <updated>1605133257341</updated>
       <workItem from="1605133265566" duration="636000" />
-      <workItem from="1605135287406" duration="12247000" />
+      <workItem from="1605135287406" duration="16282000" />
     </task>
     <task id="LOCAL-00001" summary="* Basic setup.&#10;* Grid creation and validation.&#10;* Basic ship functionality and hull classes.&#10;* Basic fleet positioning.">
       <created>1605237184583</created>
@@ -111,7 +115,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605237184583</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="* Game board boundary testing on ship placement.">
+      <created>1605243962750</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1605243962750</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -134,29 +145,98 @@
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="* Basic setup.&#10;* Grid creation and validation.&#10;* Basic ship functionality and hull classes.&#10;* Basic fleet positioning." />
-    <option name="LAST_COMMIT_MESSAGE" value="* Basic setup.&#10;* Grid creation and validation.&#10;* Basic ship functionality and hull classes.&#10;* Basic fleet positioning." />
+    <MESSAGE value="* Game board boundary testing on ship placement." />
+    <option name="LAST_COMMIT_MESSAGE" value="* Game board boundary testing on ship placement." />
   </component>
   <component name="WindowStateProjectService">
     <state x="488" y="313" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605225426579">
       <screen x="0" y="23" width="2048" height="1257" />
     </state>
     <state x="488" y="313" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.2048.1257@0.23.2048.1257" timestamp="1605225426579" />
-    <state width="2006" height="348" key="GridCell.Tab.0.bottom" timestamp="1605225210188">
+    <state x="1178" y="568" key="#xdebugger.evaluate" timestamp="1605247547276">
       <screen x="0" y="23" width="2048" height="1257" />
     </state>
-    <state width="2006" height="348" key="GridCell.Tab.0.bottom/0.23.2048.1257@0.23.2048.1257" timestamp="1605225210188" />
-    <state width="2006" height="348" key="GridCell.Tab.0.center" timestamp="1605225210188">
+    <state x="1178" y="568" key="#xdebugger.evaluate/0.23.2048.1257@0.23.2048.1257" timestamp="1605247547276" />
+    <state width="2006" height="455" key="GridCell.Tab.0.bottom" timestamp="1605251312487">
       <screen x="0" y="23" width="2048" height="1257" />
     </state>
-    <state width="2006" height="348" key="GridCell.Tab.0.center/0.23.2048.1257@0.23.2048.1257" timestamp="1605225210188" />
-    <state width="2006" height="348" key="GridCell.Tab.0.left" timestamp="1605225210187">
+    <state width="2006" height="455" key="GridCell.Tab.0.bottom/0.23.2048.1257@0.23.2048.1257" timestamp="1605251312487" />
+    <state width="2006" height="455" key="GridCell.Tab.0.center" timestamp="1605251312486">
       <screen x="0" y="23" width="2048" height="1257" />
     </state>
-    <state width="2006" height="348" key="GridCell.Tab.0.left/0.23.2048.1257@0.23.2048.1257" timestamp="1605225210187" />
-    <state width="2006" height="348" key="GridCell.Tab.0.right" timestamp="1605225210188">
+    <state width="2006" height="455" key="GridCell.Tab.0.center/0.23.2048.1257@0.23.2048.1257" timestamp="1605251312486" />
+    <state width="2006" height="455" key="GridCell.Tab.0.left" timestamp="1605251312486">
       <screen x="0" y="23" width="2048" height="1257" />
     </state>
-    <state width="2006" height="348" key="GridCell.Tab.0.right/0.23.2048.1257@0.23.2048.1257" timestamp="1605225210188" />
+    <state width="2006" height="455" key="GridCell.Tab.0.left/0.23.2048.1257@0.23.2048.1257" timestamp="1605251312486" />
+    <state width="2006" height="455" key="GridCell.Tab.0.right" timestamp="1605251312487">
+      <screen x="0" y="23" width="2048" height="1257" />
+    </state>
+    <state width="2006" height="455" key="GridCell.Tab.0.right/0.23.2048.1257@0.23.2048.1257" timestamp="1605251312487" />
+    <state width="2006" height="455" key="GridCell.Tab.1.bottom" timestamp="1605251312488">
+      <screen x="0" y="23" width="2048" height="1257" />
+    </state>
+    <state width="2006" height="455" key="GridCell.Tab.1.bottom/0.23.2048.1257@0.23.2048.1257" timestamp="1605251312488" />
+    <state width="2006" height="455" key="GridCell.Tab.1.center" timestamp="1605251312487">
+      <screen x="0" y="23" width="2048" height="1257" />
+    </state>
+    <state width="2006" height="455" key="GridCell.Tab.1.center/0.23.2048.1257@0.23.2048.1257" timestamp="1605251312487" />
+    <state width="2006" height="455" key="GridCell.Tab.1.left" timestamp="1605251312487">
+      <screen x="0" y="23" width="2048" height="1257" />
+    </state>
+    <state width="2006" height="455" key="GridCell.Tab.1.left/0.23.2048.1257@0.23.2048.1257" timestamp="1605251312487" />
+    <state width="2006" height="455" key="GridCell.Tab.1.right" timestamp="1605251312488">
+      <screen x="0" y="23" width="2048" height="1257" />
+    </state>
+    <state width="2006" height="455" key="GridCell.Tab.1.right/0.23.2048.1257@0.23.2048.1257" timestamp="1605251312488" />
+    <state width="2006" height="455" key="GridCell.Tab.2.bottom" timestamp="1605251312488">
+      <screen x="0" y="23" width="2048" height="1257" />
+    </state>
+    <state width="2006" height="455" key="GridCell.Tab.2.bottom/0.23.2048.1257@0.23.2048.1257" timestamp="1605251312488" />
+    <state width="2006" height="455" key="GridCell.Tab.2.center" timestamp="1605251312488">
+      <screen x="0" y="23" width="2048" height="1257" />
+    </state>
+    <state width="2006" height="455" key="GridCell.Tab.2.center/0.23.2048.1257@0.23.2048.1257" timestamp="1605251312488" />
+    <state width="2006" height="455" key="GridCell.Tab.2.left" timestamp="1605251312488">
+      <screen x="0" y="23" width="2048" height="1257" />
+    </state>
+    <state width="2006" height="455" key="GridCell.Tab.2.left/0.23.2048.1257@0.23.2048.1257" timestamp="1605251312488" />
+    <state width="2006" height="455" key="GridCell.Tab.2.right" timestamp="1605251312488">
+      <screen x="0" y="23" width="2048" height="1257" />
+    </state>
+    <state width="2006" height="455" key="GridCell.Tab.2.right/0.23.2048.1257@0.23.2048.1257" timestamp="1605251312488" />
+    <state width="2006" height="455" key="GridCell.Tab.3.bottom" timestamp="1605251312489">
+      <screen x="0" y="23" width="2048" height="1257" />
+    </state>
+    <state width="2006" height="455" key="GridCell.Tab.3.bottom/0.23.2048.1257@0.23.2048.1257" timestamp="1605251312489" />
+    <state width="2006" height="455" key="GridCell.Tab.3.center" timestamp="1605251312489">
+      <screen x="0" y="23" width="2048" height="1257" />
+    </state>
+    <state width="2006" height="455" key="GridCell.Tab.3.center/0.23.2048.1257@0.23.2048.1257" timestamp="1605251312489" />
+    <state width="2006" height="455" key="GridCell.Tab.3.left" timestamp="1605251312488">
+      <screen x="0" y="23" width="2048" height="1257" />
+    </state>
+    <state width="2006" height="455" key="GridCell.Tab.3.left/0.23.2048.1257@0.23.2048.1257" timestamp="1605251312488" />
+    <state width="2006" height="455" key="GridCell.Tab.3.right" timestamp="1605251312489">
+      <screen x="0" y="23" width="2048" height="1257" />
+    </state>
+    <state width="2006" height="455" key="GridCell.Tab.3.right/0.23.2048.1257@0.23.2048.1257" timestamp="1605251312489" />
+    <state width="2006" height="455" key="GridCell.Tab.4.bottom" timestamp="1605251312490">
+      <screen x="0" y="23" width="2048" height="1257" />
+    </state>
+    <state width="2006" height="455" key="GridCell.Tab.4.bottom/0.23.2048.1257@0.23.2048.1257" timestamp="1605251312490" />
+    <state width="2006" height="455" key="GridCell.Tab.4.center" timestamp="1605251312489">
+      <screen x="0" y="23" width="2048" height="1257" />
+    </state>
+    <state width="2006" height="455" key="GridCell.Tab.4.center/0.23.2048.1257@0.23.2048.1257" timestamp="1605251312489" />
+    <state width="2006" height="455" key="GridCell.Tab.4.left" timestamp="1605251312489">
+      <screen x="0" y="23" width="2048" height="1257" />
+    </state>
+    <state width="2006" height="455" key="GridCell.Tab.4.left/0.23.2048.1257@0.23.2048.1257" timestamp="1605251312489" />
+    <state width="2006" height="455" key="GridCell.Tab.4.right" timestamp="1605251312489">
+      <screen x="0" y="23" width="2048" height="1257" />
+    </state>
+    <state width="2006" height="455" key="GridCell.Tab.4.right/0.23.2048.1257@0.23.2048.1257" timestamp="1605251312489" />
     <state x="682" y="339" key="RiderGenerateDialog" timestamp="1605234741838">
       <screen x="0" y="23" width="2048" height="1257" />
     </state>
@@ -165,6 +245,10 @@
       <screen x="0" y="23" width="2048" height="1257" />
     </state>
     <state x="100" y="124" width="1848" height="1057" key="VCS.FileHistoryDialog/0.23.2048.1257@0.23.2048.1257" timestamp="1605243041940" />
+    <state x="698" y="274" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1605245500581">
+      <screen x="0" y="23" width="2048" height="1257" />
+    </state>
+    <state x="698" y="274" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.23.2048.1257@0.23.2048.1257" timestamp="1605245500581" />
     <state x="686" y="304" width="670" height="676" key="search.everywhere.popup" timestamp="1605234344334">
       <screen x="0" y="23" width="2048" height="1257" />
     </state>

@@ -1,7 +1,7 @@
 using System;
+using System.Drawing;
 using AssertNet;
 using NUnit.Framework;
-using NUnit.Framework.Interfaces;
 
 namespace N15G.Battleship
 {
@@ -58,8 +58,8 @@ namespace N15G.Battleship
 
             Assertions.AssertThat(ewBattleShip.Left).IsEqualTo(3);
             Assertions.AssertThat(ewBattleShip.Top).IsEqualTo(4);
-            Assertions.AssertThat(ewBattleShip.Right).IsEqualTo(7);
-            Assertions.AssertThat(ewBattleShip.Bottom).IsEqualTo(4);
+            Assertions.AssertThat(ewBattleShip.Width).IsEqualTo(4);
+            Assertions.AssertThat(ewBattleShip.Height).IsEqualTo(1);
         }
 
         [Test]
@@ -73,33 +73,33 @@ namespace N15G.Battleship
 
             Assertions.AssertThat(nsCruiser.Left).IsEqualTo(3);
             Assertions.AssertThat(nsCruiser.Top).IsEqualTo(4);
-            Assertions.AssertThat(nsCruiser.Right).IsEqualTo(3);
-            Assertions.AssertThat(nsCruiser.Bottom).IsEqualTo(7);
+            Assertions.AssertThat(nsCruiser.Width).IsEqualTo(1);
+            Assertions.AssertThat(nsCruiser.Height).IsEqualTo(3);
         }
 
         [Test]
-        public void TestInsertShipWithinGameBounds()
+        public void TestPlaceShipWithinGameBounds()
         {
             new BattleshipGameBoard()
                 .PlaceShip(new Carrier(), 0, 0, Heading.EastWest);
         }
 
         [Test]
-        public void TestInsertShipRightOnXBoundary()
+        public void TestPlaceShipRightOnXBoundary()
         {
             new BattleshipGameBoard()
                 .PlaceShip(new Carrier(), 5, 0, Heading.EastWest);
         }
 
         [Test]
-        public void TestInsertShipRightOnYBoundary()
+        public void TestPlaceShipRightOnYBoundary()
         {
             new BattleshipGameBoard()
                 .PlaceShip(new Carrier(), 0, 5, Heading.NorthSouth);
         }
 
         [Test]
-        public void TestInsertShipExceedingXAxis()
+        public void TestPlaceShipExceedingXAxis()
         {
             Assertions.AssertThat(() =>
             {
@@ -109,7 +109,7 @@ namespace N15G.Battleship
         }
 
         [Test]
-        public void TestInsertShipEntirelyOverXAxis()
+        public void TestPlaceShipEntirelyOverXAxis()
         {
             Assertions.AssertThat(() =>
             {
@@ -119,7 +119,7 @@ namespace N15G.Battleship
         }
 
         [Test]
-        public void TestInsertShipExceedingYAxis()
+        public void TestPlaceShipExceedingYAxis()
         {
             Assertions.AssertThat(() =>
             {
@@ -129,13 +129,47 @@ namespace N15G.Battleship
         }
 
         [Test]
-        public void TestInsertShipEntirelyOverYAxis()
+        public void TestPlaceShipEntirelyOverYAxis()
         {
             Assertions.AssertThat(() =>
             {
                 new BattleshipGameBoard()
                     .PlaceShip(new Carrier(), 0, 15, Heading.EastWest);
             }).ThrowsException(typeof(ArgumentOutOfRangeException));
+        }
+
+        [Test]
+        public void TestPlaceShipsNoCollision()
+        {
+            var game = new BattleshipGameBoard();
+
+            game.PlaceShip(new Carrier(), 0, 0, Heading.EastWest);
+
+            game.PlaceShip(new Cruiser(), 1, 1, Heading.EastWest);
+        }
+
+        [Test]
+        public void TestPlaceShipParallelCollision()
+        {
+            var game = new BattleshipGameBoard();
+
+            game.PlaceShip(new Carrier(), 0, 0, Heading.EastWest);
+
+            Assertions.AssertThat(() => { game.PlaceShip(new Cruiser(), 1, 0, Heading.EastWest); })
+                .ThrowsException(typeof(ArgumentException))
+                .WithMessageContaining("collide");
+        }
+
+        [Test]
+        public void TestPlaceShipPerpendicularCollision()
+        {
+            var game = new BattleshipGameBoard();
+
+            game.PlaceShip(new Carrier(), 0, 1, Heading.EastWest);
+
+            Assertions.AssertThat(() => { game.PlaceShip(new Cruiser(), 1, 0, Heading.NorthSouth); })
+                .ThrowsException(typeof(ArgumentException))
+                .WithMessageContaining("collide");
         }
     }
 }
